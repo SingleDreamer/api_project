@@ -6,7 +6,12 @@ random.seed()
 
 @app.route("/")
 def index():
-	return "hello"
+        tag = request.args.get("text")
+        submit = request.args.get("submit")
+        if (submit=="Submit" and tag != ""):
+                print "yes"
+                return redirect("/t/"+tag)
+	return render_template("home.html")
 
 @app.route("/t/<tag>")
 def tag(tag=""):
@@ -16,18 +21,25 @@ def tag(tag=""):
 	resultstring = request.read()
 	result = json.loads(resultstring)
 	s = ""
-        r = random.randint(0, len(result['response'])-1)
-        print r
 	#for item in result['response']:
-        item = result['response'][r]
-		#print item
+ 		#print item
         try:
+                r = random.randint(0, len(result['response'])-1)
+                print r
+                item = result['response'][r]
                 s= s + "<img src=%s>"%(item['photos'][0]['original_size']['url'])
                 #print s
         except:
                 pass
-	return s
 
+        if (s==""):
+                return redirect("/error")
+
+	return render_template("tag.html",body=s)
+
+@app.route("/error")
+def error():
+        return render_template("error.html")
 
 if __name__=="__main__":
    app.debug=True
