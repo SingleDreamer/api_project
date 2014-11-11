@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>Pies</title>
+  </head>
+
+  <body>
+
+    <form>	
+      <font size=20>Good:</font>
+      <input type="checkbox" name="good" value="good">good song<br>
+      <input type="checkbox" name="instrumentals" value="ginst">good instrumentals<br> 
+      <input type="checkbox" name="guitar" value="gg">good guitar<br>
+      <input type="checkbox" name="piano" value="gpiano">good piano<br> 
+      <input type="checkbox" name="horns" value="ghorns">good horns<br>
+      <input type="checkbox" name="vocals" value="gvoc">good vocals<br> 
+      <input type="checkbox" name="lyrics" value="glyr">good lyrics<br>
+      <input type="checkbox" name="beat" value="gbeat">good beat<br> 
+      <input type="checkbox" name="rhythm" value="grhy">good rhythm<br>
+
+      <font size=20>Bad:</font>
+      <input type="checkbox" name="bad" value="bad">bad song<br>
+      <input type="checkbox" name="instrumentals" value="binst">bad instrumentals<br> 
+      <input type="checkbox" name="guitar" value="bg">bad guitar<br>
+      <input type="checkbox" name="piano" value="bpiano">bad piano<br> 
+      <input type="checkbox" name="horns" value="bhorns">bad horns<br>
+      <input type="checkbox" name="vocals" value="bvoc">bad vocals<br> 
+      <input type="checkbox" name="lyrics" value="blyr">bad lyrics<br>
+      <input type="checkbox" name="beat" value="bbeat">bad beat<br> 
+      <input type="checkbox" name="rhythm" value="brhy">bad rhythm<br>
+
+      
+      <font size=20>Misc:</font>
+      <input type="checkbox" name="upbeat" value="up">upbeat<br>
+      <input type="checkbox" name="rap" value="rap">rap<br> 
+      <input type="checkbox" name="count" value="count">country<br>
+      <input type="checkbox" name="cp" value="cp">computerized<br> 
+      <input type="checkbox" name="pop" value="pop">pop<br>
+      <input type="checkbox" name="rock" value="rock">rock<br> 
+      <input type="checkbox" name="slow" value="slow">slow<br> 
+      <input type="checkbox" name="fast" value="fast">fast<br>
+    </form>
+
+  </body>
+
+<html>
