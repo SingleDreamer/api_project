@@ -1,7 +1,8 @@
 from flask import Flask,request,url_for,redirect,render_template
-import json, urllib2
+import json, urllib2, random
 
 app=Flask(__name__)
+random.seed()
 
 @app.route("/")
 def index():
@@ -15,13 +16,16 @@ def tag(tag=""):
 	resultstring = request.read()
 	result = json.loads(resultstring)
 	s = ""
-	for item in result['response']:
-		print item
-		try:
-			s= s + "<img src=%s>"%(item['photos'][0]['original_size']['url'])
-			print s
-		except:
-			pass
+        r = random.randint(0, len(result['response'])-1)
+        print r
+	#for item in result['response']:
+        item = result['response'][r]
+		#print item
+        try:
+                s= s + "<img src=%s>"%(item['photos'][0]['original_size']['url'])
+                #print s
+        except:
+                pass
 	return s
 
 
