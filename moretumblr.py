@@ -20,18 +20,49 @@ def tag(tag=""):
 	resultstring = request.read()
 	result = json.loads(resultstring)
 	s = ""
-#        print result
+
+#semi-related tags
+        rtags = {}
+
 	for item in result['response']:
-                s = s + str(item) + "<br>"
-#		print item['post_url']
+#                s = s + str(item) + "<br>"
 		try:
-#			s= s + "<a href="+item['post_url']+">"+item['post_url'] +"</a><br>"
-                        print item['reblog_key']
-#			print s
+                        s+="<img src=%s>"%item['photos'][0]['original_size']['url']
+                        t = item['tags'][0]
+                        if(t!="pokemon" or t!="Pokemon"):
+                                rtags[item['tags'][0]]=""
 		except:
 			pass
-	return s
 
+#something weird where it goes through more tags and finds more things
+        p=""
+        for t in rtags.keys():
+                url="http://api.tumblr.com/v2/tagged?tag=%s&api_key=aTQcvkZkpZbz7ILTsi8ekrUFE0maSPweft6mM1yyJhQBdnV5eb"
+                url = url%(t)
+#                print url
+                try:
+                        request = urllib2.urlopen(url)
+                        resultstring = request.read()
+                        result = json.loads(resultstring)
+                        p+="<br><br>"+t+"<br>"
+                        for item in result['response']:
+                                try:
+                                        p += "<img src=%s>"%item['photos'][0]['original_size']['url']
+                                except:
+                                        pass
+                except:
+                        print t
+
+        if (s==""):
+                print "hello"
+                return redirect("/error")
+                
+        s += "<br><br><h3>Related Tags</h3><br>" + p 
+	return render_template("tag.html",body=s)
+
+@app.route("/error")
+def error():
+        return render_template("error.html")
 
 if __name__=="__main__":
    app.debug=True

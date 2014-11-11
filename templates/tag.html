@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block header %}
+We found things!
+{% endblock header %}
+
+{% block body %}
+{% autoescape on %}
+{{body}}
+{% endautoescape %}
+{% endblock body %}
