@@ -26,14 +26,11 @@ def tag(title="",image="",text=""):
                 request = urllib2.urlopen(url)
                 resultstring = request.read()
                 result = json.loads(resultstring)
-                while (t==""):
-                        try:
-                                r = random.randint(0, len(result['response'])-1)
-                                #                        print r
-                                item = result['response'][r]
-                                t = t + item['title']
-                        except:
-                                pass
+                r = random.randint(0, len(result['response'])-1)
+                #                        print r
+                item = result['response'][r]
+                t = t + item['title']
+                
         except:
                 pass
         #---Title---
@@ -71,15 +68,12 @@ def tag(title="",image="",text=""):
                 result = json.loads(resultstring)
                 res = result['response']
 
-                while (tx==""):
-                        try:
-                                r = random.randint(0, len(res)-1)
-                                item = res[r]
-                                #                                print r
-                                #                                print item
-                                tx += tx + "<br>"+item['body']
-                        except:
-                                pass
+                r = random.randint(0, len(res)-1)
+                item = res[r]
+                #                                print r
+                #                                print item
+                tx += tx + "<br>"+item['body']
+       
         except:
                 pass
                          
