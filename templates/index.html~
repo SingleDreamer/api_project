@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>
+      Random Posts
+    </title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/superhero/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="navbar navbar-default">
+      <div class="navbar-header">
+	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	</button>
+	<a class="navbar-brand" href="/">Home</a>
+      </div>
+    </div>
+    <center>
+      <h1>
+	Create a random post!
+      </h1>
+
+<div class="container-fluid">
+<div class="row">
+  <center>
+      <br>
+      <a href = "/post"><input type="submit" class="btn btn-success" name="submit" value="Submit"></a>
+  </center>
+  
+
+testtest<img src=http://38.media.tumblr.com/4cfcfcd0faacfd9e232357b084680f98/tumblr_nexdrzxKEK1tlanlbo1_500.jpg>g src=http://38.media.tumblr.com/4cfcfcd0faacfd9e232357b084680f98/tumblr_nexdrzxKEK1tlanlbo1_500.jg src=http://38.media.tumblr.com/4cfcfcd0faacfd9e232357b084680f98/tumblr_nexdrzxKEK1tlanlbo1_500.jg src=http://38.media.tumblr.com/4cfcfcd0faacfd9e232357b084680f98/tumblr_nexdrzxKEK1tlanlbo1_500.jg src=http://38.media.tumblr.com/4cfcfcd0faacfd9e232357b084680f98/tumblr_nexdrzxKEK1tlanlbo1_500.j

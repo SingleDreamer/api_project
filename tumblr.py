@@ -1,11 +1,23 @@
 from flask import Flask,request,url_for,redirect,render_template
-import json, urllib2, random
+import json, urllib2, random, sqlite3
 
 app=Flask(__name__)
 random.seed()
 
 @app.route("/")
-def index():
+def index():       
+        f = open ("templates/index.html", 'r')
+        t = f.read()
+        f.close()
+        return t + """</div>
+        </div>
+        </center>
+        </body>
+        </html>
+        """
+
+@app.route("/post")
+def post():
         title = request.args.get("title")
         image = request.args.get("image")
         text = request.args.get("text")
@@ -82,12 +94,46 @@ def tag(title="",image="",text=""):
         if (b==""):
                 return redirect("/error")
                 #---Text---
-
-        return render_template("tag.html",title=t,body=b)
+                
+        conn = sqlite3.connect("blog.db")
+        e = "insert into posts values ('"+t+"', '"+b+"');"
+        c = conn.cursor()
+        c.execute(e)
+        conn.commit()
+        e = """
+        select * from posts;
+        """
+        s = c.execute(e)
+        text = [x for x in s]
+        conn.commit();
+        
+        f = open ("templates/index.html", 'a')
+        for x in text:
+                print x[0]
+                print x[1]
+                f.write(x[0])
+                f.write(x[1])
+        f.close
+        return redirect (url_for ('index'))
         
 @app.route("/error")
 def error():
         return render_template("error.html")
+
+@app.route("/restart")
+def restart():
+        conn = sqlite3.connect("blog.db")
+        f = """
+        drop table posts;
+        """
+        p = """
+        create table posts(title text, body text); 
+        """
+        c = conn.cursor()
+        #c.execute(f)
+        c.execute(e)
+        conn.commit();
+        return redirect (url_for ('index'))
 
 if __name__=="__main__":
         app.debug=True
