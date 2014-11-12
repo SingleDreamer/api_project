@@ -113,19 +113,21 @@ def tag(title="",image="",text=""):
           #      print x[1]
            #     f.write(x[0])
             #    f.write(x[1])
-        try: 
-                f.write ("""
+        try:
+                c ="""
                 <center><div class = 'col-lg-8 col-lg-offset-2 panel panel-default'>
                 <div class='panel-heading'>
-                <h3 class='panel-title'> """)
-                f.write (t)
-                f.write ("""
+                <h3 class='panel-title'>"""\
+                + t + \
+                """
                 </h3>
                 </div>
                 <div class='panel-body'>
-                """)
-                f.write (b)
-                f.write ("</div></div></center>")
+                """\
+                +b+\
+                """</div></div></center>"""
+                print c
+                f.write (c)
                 f.close
                 return redirect (url_for ('index'))
         except:
