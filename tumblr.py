@@ -95,26 +95,41 @@ def tag(title="",image="",text=""):
                 return redirect("/error")
                 #---Text---
                 
-        conn = sqlite3.connect("blog.db")
-        e = "insert into posts values ('"+t+"', '"+b+"');"
-        c = conn.cursor()
-        c.execute(e)
-        conn.commit()
-        e = """
-        select * from posts;
-        """
-        s = c.execute(e)
-        text = [x for x in s]
-        conn.commit();
+        #conn = sqlite3.connect("blog.db")
+        #e = "insert into posts values ('"+t+"', '"+b+"');"
+        #c = conn.cursor()
+        #c.execute(e)
+        #conn.commit()
+        #e = """
+        #select * from posts;
+        #"""
+        #s = c.execute(e)
+        #text = [x for x in s]
+        #conn.commit();
         
         f = open ("templates/index.html", 'a')
-        for x in text:
-                print x[0]
-                print x[1]
-                f.write(x[0])
-                f.write(x[1])
-        f.close
-        return redirect (url_for ('index'))
+        #for x in text:
+         #       print x[0]
+          #      print x[1]
+           #     f.write(x[0])
+            #    f.write(x[1])
+        try: 
+                f.write ("""
+                <center><div class = 'col-lg-8 col-lg-offset-2 panel panel-default'>
+                <div class='panel-heading'>
+                <h3 class='panel-title'> """)
+                f.write (t)
+                f.write ("""
+                </h3>
+                </div>
+                <div class='panel-body'>
+                """)
+                f.write (b)
+                f.write ("</div></div></center>")
+                f.close
+                return redirect (url_for ('index'))
+        except:
+                return redirect (url_for ('error'))
         
 @app.route("/error")
 def error():
